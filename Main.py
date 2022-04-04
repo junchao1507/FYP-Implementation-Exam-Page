@@ -71,7 +71,6 @@ def display_questions():
         start_time_ = e.val()['date'] + ' ' + e.val()['start_time'] 
         duration = e.val()['duration_minutes']
                 
-    st.write(start_time_)
     q_num = 0
     question_number = []
     question_description = []
