@@ -11,13 +11,11 @@ import pandas as pd
 from datetime import datetime
 from datetime import timedelta
 import time
-import pyttsx3
 from PIL import Image
 
 
 
-def countdown(deadline_time, timer_name, intro_msg, outro_msg = ''):
-    pyttsx3.speak(intro_msg)
+def countdown(deadline_time, timer_name, outro_msg = ''):
     with st.empty():
         while(True):
             now = datetime.now()
@@ -27,7 +25,6 @@ def countdown(deadline_time, timer_name, intro_msg, outro_msg = ''):
             else:
                 break
         
-    pyttsx3.speak(outro_msg)
     
     
 def submit_exam():
@@ -52,8 +49,8 @@ def submit_exam():
         st.session_state.db.child("student_answers").push(answer)
         st.session_state.db.child("student_information").child(st.session_state.stud_id).set(stud_info)
     
-    st.success('All Answers submitted.')
-    pyttsx3.speak("Examination submission confirmed. Thank you for taking the examination.")
+    st.success('All Answers submitted. You may leave now.')
+    
     
 
 def display_questions():
@@ -182,7 +179,7 @@ def display_questions():
     # If the student logs in after the examination has ended, display warning message 
     else:
         st.warning('The examination has ended. Please contact your teacher if you have missed the examination.')
-        pyttsx3.speak('The examination has ended. Please contact your teacher if you have missed the examination.')
+
     
         
 def verify_exam_login():
