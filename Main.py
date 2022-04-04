@@ -105,9 +105,9 @@ def display_questions():
     
     # Sort the question by question number
     questions.sort_values(by=["question_number"], inplace = True)
-    start_time = datetime.strptime(start_time_ , '%Y-%m-%d %H:%M:%S') + timedelta(hours = 8)
+    start_time = datetime.strptime(start_time_ , '%Y-%m-%d %H:%M:%S') - timedelta(hours = 8)
     now = datetime.now()
-    end_time = datetime.strptime(start_time_ , '%Y-%m-%d %H:%M:%S') + timedelta(minutes = duration) + timedelta(hours = 8)
+    end_time = datetime.strptime(start_time_ , '%Y-%m-%d %H:%M:%S') + timedelta(minutes = duration) - timedelta(hours = 8)
 
     # Display the exam title
     st.header(exam_title)
