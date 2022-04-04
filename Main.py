@@ -71,6 +71,7 @@ def display_questions():
         start_time_ = e.val()['date'] + ' ' + e.val()['start_time'] 
         duration = e.val()['duration_minutes']
                 
+    
     q_num = 0
     question_number = []
     question_description = []
@@ -104,9 +105,9 @@ def display_questions():
     
     # Sort the question by question number
     questions.sort_values(by=["question_number"], inplace = True)
-    start_time = datetime.strptime(start_time_ + timedelta(hours = 8), '%Y-%m-%d %H:%M:%S')
+    start_time = datetime.strptime(start_time_ , '%Y-%m-%d %H:%M:%S') + timedelta(hours = 8)
     now = datetime.now()
-    end_time = datetime.strptime(start_time_ + timedelta(hours = 8), '%Y-%m-%d %H:%M:%S') + timedelta(minutes = duration)
+    end_time = datetime.strptime(start_time_ , '%Y-%m-%d %H:%M:%S') + timedelta(minutes = duration) + timedelta(hours = 8)
 
     # Display the exam title
     st.header(exam_title)
